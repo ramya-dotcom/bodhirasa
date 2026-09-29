@@ -444,9 +444,9 @@ footer{background:#060C14;color:var(--on-dark)}
 .gi figcaption{position:absolute;inset:auto 0 0 0;padding:34px 14px 12px;background:linear-gradient(transparent,rgba(6,12,20,.9));display:grid;font-size:.8rem;color:var(--ink-soft)}
 .gi figcaption b{font:600 1.15rem var(--display);color:var(--ink)}
 .gi.ph{border:2px dashed rgba(230,169,58,.5);display:grid;place-items:center;text-align:center;color:var(--saffron);cursor:default;padding:16px;font-size:.9rem}
-.lb{position:fixed;inset:0;z-index:150;background:rgba(6,12,20,.94);display:grid;place-items:center;align-content:center;gap:12px;padding:20px}
-.lb canvas{width:min(92vw,1100px);height:auto;border-radius:14px}.lb p{color:var(--ink-soft)}
-.lb button{position:absolute;right:20px;top:16px;font-size:2rem;background:none;border:0;color:var(--ink);cursor:pointer}
+.gal-lb{position:fixed;inset:0;z-index:150;background:rgba(6,12,20,.94);display:grid;place-items:center;align-content:center;gap:12px;padding:20px}
+.gal-lb canvas{width:min(92vw,1100px);height:auto;border-radius:14px}.gal-lb p{color:var(--ink-soft)}
+.gal-lb button{position:absolute;right:20px;top:16px;font-size:2rem;background:none;border:0;color:var(--ink);cursor:pointer}
 /* testimonials */
 .tm-row{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 22px}
 .tm{flex:0 0 min(360px,84vw);scroll-snap-align:start;margin:0;background:var(--card);border-radius:20px;padding:26px 24px;border:1px solid rgba(243,231,211,.07);border-top:5px solid var(--clay);display:flex;flex-direction:column;gap:16px;box-shadow:var(--shadow)}
@@ -1191,7 +1191,7 @@ $('chips').innerHTML=tags.map((t,k)=>`<button class="chip" aria-pressed="${!k}" 
 $('chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;$('chips').querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===b));
   document.querySelectorAll('.gi').forEach(f=>f.hidden=!(b.dataset.t==='All'||f.dataset.t===b.dataset.t||f.dataset.t==='*'));});
 $('gal').addEventListener('click',e=>{const f=e.target.closest('.gi[data-s]');if(!f)return;const[c,m]=f.dataset.c.split('|');
-  const lb=document.createElement('div');lb.className='lb';lb.innerHTML='<button aria-label="Close">×</button><canvas width="1200" height="720"></canvas><p><b>'+c+'</b> · '+m+'</p>';
+  const lb=document.createElement('div');lb.className='gal-lb';lb.innerHTML='<button aria-label="Close">×</button><canvas width="1200" height="720"></canvas><p><b>'+c+'</b> · '+m+'</p>';
   const cl=()=>{lb.remove();removeEventListener('keydown',kd)},kd=ev=>{if(ev.key==='Escape')cl();};lb.addEventListener('click',cl);addEventListener('keydown',kd);
   document.body.appendChild(lb);const cv=lb.querySelector('canvas');scenes[f.dataset.s](cv.getContext('2d'),1200,720);});
 const T=[['Meera R.','Bengaluru','Hampi · Feb 2026','I had driven past Hampi a dozen times. Then I ate jolada rotti on a rooftop while my host mother named every star. By day two I had stopped checking my phone.'],
